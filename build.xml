@@ -1,0 +1,63 @@
+<project name="AnemiaHubApp" default="build">
+	<description>
+        simple example build file
+    </description>
+
+	<target name="init">
+	   <delete dir="temp" />
+	   <delete dir="dist" />	
+		
+		<mkdir dir="temp" />
+		<mkdir dir="dist" />
+		<copy todir="temp/WEB-INF/classes">						
+			<fileset dir="build" includes="**/*.*">
+			</fileset>	
+		</copy>
+
+		<copy todir="temp">
+			<fileset dir="WebContent" includes="**/*.*">
+			</fileset>
+		</copy>
+
+		<copy todir="temp/WEB-INF/lib">
+			<fileset dir="lib" includes="**/*.*">
+			</fileset>
+		</copy>
+		
+
+                        <copy todir="temp/WEB-INF/META-INF">
+	                <fileset dir="src" includes="hibernate.cfg.xml">
+	               </fileset>
+                           </copy>
+
+	</target>
+
+
+
+	<target name="build" depends="init">
+		<war destfile="./dist/anemiahubapp.war">
+					<fileset dir="temp">
+					</fileset>
+				</war>
+		</target>
+	
+	<taskdef name="wldeploy" 
+		classname="weblogic.ant.taskdefs.management.WLDeploy" 
+		classpath="C:/Oracle/Middleware/Oracle_Home/wlserver/server/lib/weblogic.jar" />
+
+	<target name="deploy" depends="build">
+				<wldeploy action="deploy" name="anemiahubapp" source="./dist/anemiahubapp.war"
+				user="weblogic"
+				password="admin123" 
+				verbose="true"
+				adminurl="t3://localhost:7001"
+				upload="true"
+				targets="AdminServer" />
+		
+	</target>
+
+	<target name="undeploy">
+
+	</target>
+
+</project>
