@@ -80,8 +80,6 @@ public class EventFilterServlet extends HttpServlet {
 			response.setContentType("application/json");
 			response.getWriter().print(jsonArray);
 			
-
-			
 		}catch(Exception e){
 			e.printStackTrace();
 			

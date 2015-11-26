@@ -30,8 +30,8 @@
 					<td><input type="reset" value="Reset"></td>
 					<td><input type="submit" value="Submit"></td>
 				<tr>
-					<td colspan="2" style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;New
-						User!!! &nbsp;&nbsp;<a href="register.jsp">Register Here</a>
+					<td colspan="2" style="color: black">New
+						User!!! <a href="register.jsp">Register Here</a>
 					</td>
 				</tr>
 			</table>
